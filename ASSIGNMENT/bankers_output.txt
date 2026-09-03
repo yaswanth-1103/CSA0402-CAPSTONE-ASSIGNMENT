@@ -1,0 +1,54 @@
+======================================================================
+UNICORE BANKER'S ALGORITHM - DEADLOCK AVOIDANCE SIMULATOR
+======================================================================
+
+Total Resources ['R1_DBLock', 'R2_FileLock', 'R3_Print', 'R4_NetIO']: [10, 5, 7, 6]
+
+Allocation Matrix
+Process                R1_DBLockR2_FileLock  R3_Print  R4_NetIO
+P1_OnlineExam                  0         1         0         1
+P2_DigitalClassroom            2         0         0         1
+P3_LibraryService              3         0         2         1
+P4_ResearchJob                 2         1         1         1
+P5_BackupService               0         0         2         1
+
+Maximum Matrix
+Process                R1_DBLockR2_FileLock  R3_Print  R4_NetIO
+P1_OnlineExam                  7         5         3         2
+P2_DigitalClassroom            3         2         2         2
+P3_LibraryService              9         0         2         2
+P4_ResearchJob                 2         2         2         2
+P5_BackupService               4         3         3         2
+
+Need Matrix (Max - Allocation)
+Process                R1_DBLockR2_FileLock  R3_Print  R4_NetIO
+P1_OnlineExam                  7         4         3         1
+P2_DigitalClassroom            1         2         2         1
+P3_LibraryService              6         0         0         1
+P4_ResearchJob                 0         1         1         1
+P5_BackupService               4         3         1         1
+
+Available Vector = {'R1_DBLock': 3, 'R2_FileLock': 3, 'R3_Print': 2, 'R4_NetIO': 1}
+
+Safety Algorithm Trace
+Initial Work = [3, 3, 2, 1]
+Step 1: P2_DigitalClassroom runs (Need [1, 2, 2, 1] <= Work). New Work = [5, 3, 2, 2]
+Step 2: P4_ResearchJob runs (Need [0, 1, 1, 1] <= Work). New Work = [7, 4, 3, 3]
+Step 3: P5_BackupService runs (Need [4, 3, 1, 1] <= Work). New Work = [7, 4, 5, 4]
+Step 4: P1_OnlineExam runs (Need [7, 4, 3, 1] <= Work). New Work = [7, 5, 5, 5]
+Step 5: P3_LibraryService runs (Need [6, 0, 0, 1] <= Work). New Work = [10, 5, 7, 6]
+
+----------------------------------------------------------------------
+RESULT: System is in a SAFE STATE
+Safe Sequence: P2_DigitalClassroom -> P4_ResearchJob -> P5_BackupService -> P1_OnlineExam -> P3_LibraryService
+
+======================================================================
+REQUEST TEST: P5_BackupService requests (R1=0, R2=3, R3=0, R4=0)
+======================================================================
+Tentative Available after grant = [3, 0, 2, 1]
+
+Safety Algorithm Trace
+Initial Work = [3, 0, 2, 1]
+----------------------------------------------------------------------
+Request CANNOT be granted -> system would enter an UNSAFE state.
+Decision: Request is DENIED / P5_BackupService is made to WAIT.

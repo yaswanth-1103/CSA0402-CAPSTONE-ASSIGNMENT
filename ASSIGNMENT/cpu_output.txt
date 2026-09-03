@@ -1,0 +1,34 @@
+==============================================================================
+UNICORE CPU SCHEDULING COMPARISON: FCFS vs ROUND ROBIN (q=4)
+==============================================================================
+
+FCFS Scheduling Result
+Process             Type          Arr Burst  Compl  Wait   TAT  Resp
+P1_OnlineExam       interactive     0     5      5     0     5     0
+P2_DigitalClassroom interactive     1     3      8     4     7     4
+P3_LibraryQuery     interactive     2     8     16     6    14     6
+P4_ExamGrading      interactive     3     6     22    13    19    13
+P5_ResearchJob      background      4    20     42    18    38    18
+P6_BackupService    background      5    15     57    37    52    37
+P7_IoTLogger        background      6     4     61    51    55    51
+P8_ExamRecordSync   interactive     6     7     68    55    62    55
+  -> Avg waiting time (interactive) = 15.60, Avg turnaround = 21.40
+  -> Avg waiting time (background) = 35.33, Avg turnaround = 48.33
+  -> Overall Avg Waiting Time = 23.00
+
+Round Robin (Quantum = 4) Scheduling Result
+Process             Type          Arr Burst  Compl  Wait   TAT  Resp
+P1_OnlineExam       interactive     0     5     20    15    20     0
+P2_DigitalClassroom interactive     1     3      7     3     6     3
+P3_LibraryQuery     interactive     2     8     36    26    34     5
+P4_ExamGrading      interactive     3     6     38    29    35     8
+P5_ResearchJob      background      4    20     68    44    64    11
+P6_BackupService    background      5    15     64    44    59    15
+P7_IoTLogger        background      6     4     28    18    22    18
+P8_ExamRecordSync   interactive     6     7     49    36    43    22
+  -> Avg waiting time (interactive) = 21.80, Avg turnaround = 27.60
+  -> Avg waiting time (background) = 35.33, Avg turnaround = 48.33
+  -> Overall Avg Waiting Time = 26.88
+
+Round Robin Gantt Chart (process:start-end):
+P1_OnlineExam:0-4 | P2_DigitalClassroom:4-7 | P3_LibraryQuery:7-11 | P4_ExamGrading:11-15 | P5_ResearchJob:15-19 | P1_OnlineExam:19-20 | P6_BackupService:20-24 | P7_IoTLogger:24-28 | P8_ExamRecordSync:28-32 | P3_LibraryQuery:32-36 | P4_ExamGrading:36-38 | P5_ResearchJob:38-42 | P6_BackupService:42-46 | P8_ExamRecordSync:46-49 | P5_ResearchJob:49-53 | P6_BackupService:53-57 | P5_ResearchJob:57-61 | P6_BackupService:61-64 | P5_ResearchJob:64-68

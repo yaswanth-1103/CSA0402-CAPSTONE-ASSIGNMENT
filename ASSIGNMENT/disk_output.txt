@@ -1,0 +1,25 @@
+==============================================================================
+UNICORE DISK SCHEDULING SIMULATOR  (0-199 cylinders, head start = 90)
+Pending Requests (11): [55, 182, 45, 108, 130, 12, 170, 90, 25, 160, 195]
+==============================================================================
+
+FCFS   Service Order: 90 -> 55 -> 182 -> 45 -> 108 -> 130 -> 12 -> 170 -> 90 -> 25 -> 160 -> 195
+FCFS   Total Head Movement = 975 cylinders
+
+SSTF   Service Order: 90 -> 90 -> 108 -> 130 -> 160 -> 170 -> 182 -> 195 -> 55 -> 45 -> 25 -> 12
+SSTF   Total Head Movement = 288 cylinders
+
+SCAN   Full Path (incl. disk end): 90 -> 90 -> 108 -> 130 -> 160 -> 170 -> 182 -> 195 -> 199 -> 55 -> 45 -> 25 -> 12
+SCAN   Total Head Movement = 296 cylinders
+
+C-SCAN Full Path (incl. wrap to 0): 90 -> 90 -> 108 -> 130 -> 160 -> 170 -> 182 -> 195 -> 199 -> 0 -> 12 -> 25 -> 45 -> 55
+C-SCAN Total Head Movement = 363 cylinders
+
+==============================================================================
+SUMMARY TABLE
+==============================================================================
+Algorithm    Total Head Movement    Avg Seek/Request
+FCFS                         975               88.64
+SSTF                         288               26.18
+SCAN                         296               26.91
+C-SCAN                       363               33.00

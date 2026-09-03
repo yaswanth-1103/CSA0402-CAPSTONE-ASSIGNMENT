@@ -1,0 +1,47 @@
+==============================================================================
+UNICORE PAGE REPLACEMENT SIMULATOR (Reference string length = 20)
+Reference String: [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
+==============================================================================
+
+##############################################################################
+FRAME COUNT = 3
+##############################################################################
+
+FIFO — 3 Frames -> Total Page Faults = 15
+Ref  :  7   0   1   2   0   3   0   4   2   3   0   3   2   1   2   0   1   7   0   1
+Fault:  F   F   F   F   .   F   F   F   F   F   F   .   .   F   F   .   .   F   F   F
+
+LRU — 3 Frames -> Total Page Faults = 12
+Ref  :  7   0   1   2   0   3   0   4   2   3   0   3   2   1   2   0   1   7   0   1
+Fault:  F   F   F   F   .   F   .   F   F   F   F   .   .   F   .   F   .   F   .   .
+
+Optimal — 3 Frames -> Total Page Faults = 9
+Ref  :  7   0   1   2   0   3   0   4   2   3   0   3   2   1   2   0   1   7   0   1
+Fault:  F   F   F   F   .   F   .   F   .   .   F   .   .   F   .   .   .   F   .   .
+
+##############################################################################
+FRAME COUNT = 4
+##############################################################################
+
+FIFO — 4 Frames -> Total Page Faults = 10
+Ref  :  7   0   1   2   0   3   0   4   2   3   0   3   2   1   2   0   1   7   0   1
+Fault:  F   F   F   F   .   F   .   F   .   .   F   .   .   F   F   .   .   F   .   .
+
+LRU — 4 Frames -> Total Page Faults = 8
+Ref  :  7   0   1   2   0   3   0   4   2   3   0   3   2   1   2   0   1   7   0   1
+Fault:  F   F   F   F   .   F   .   F   .   .   .   .   .   F   .   .   .   F   .   .
+
+Optimal — 4 Frames -> Total Page Faults = 8
+Ref  :  7   0   1   2   0   3   0   4   2   3   0   3   2   1   2   0   1   7   0   1
+Fault:  F   F   F   F   .   F   .   F   .   .   .   .   .   F   .   .   .   F   .   .
+
+==============================================================================
+SUMMARY TABLE — Total Page Faults
+==============================================================================
+Algorithm       3 Frames    4 Frames
+FIFO                  15          10
+LRU                   12           8
+Optimal                9           8
+
+Belady's Anomaly check (FIFO): 15 (3 frames) vs 10 (4 frames)
+-> No Belady's anomaly observed for FIFO on this reference string (faults did not increase with more frames).
